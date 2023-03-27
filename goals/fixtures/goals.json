@@ -1,0 +1,39 @@
+[
+  {
+    "model": "goals.goal",
+    "pk": 1,
+    "fields": {
+      "goalType": "STANDUP",
+      "title": "React Js Docs",
+      "description": "Read up react js official docs up till hooks.",
+      "createdBy": "mock_user_id",
+      "createdAt": "2022-09-04 18:12:01"
+    }
+  },
+  {
+    "model": "goals.usergoal",
+    "pk": 1,
+    "fields": {
+      "userId": "test_user_id",
+      "startsOn": "2022-09-04 18:12:01",
+      "endsOn": "2022-10-04 18:12:01",
+      "percentageCompleted": 60,
+      "assignedBy": "test_super_user_id",
+      "status": "ON_HOLD",
+      "goal_id": 1
+    }
+  },
+  {
+    "model": "goals.usergoal",
+    "pk": 2,
+    "fields": {
+      "userId": "test_user_id_2",
+      "startsOn": "2022-09-04 18:12:01",
+      "endsOn": "2022-10-04 18:12:01",
+      "percentageCompleted": 30,
+      "assignedBy": "test_super_user_id",
+      "status": "ONGOING",
+      "goal_id": 1
+    }
+  }
+]
