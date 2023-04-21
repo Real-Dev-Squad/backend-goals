@@ -3,30 +3,34 @@ import os
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-from .utils import env
+from base.utils import env
+from base.models import BaseModel
 
-
-class Token_Custom(models.Model):
+class Token_Custom(BaseModel):
     """
     The default authorization token model.
     """
     auth_token = models.CharField(_("Auth Token"), max_length=40)
-    userId = models.CharField(primary_key=True, max_length=80)
-    created = models.DateTimeField(_("Created"), auto_now_add=True)
+    user_id = models.CharField(primary_key=True, max_length=80)
+    token_created = models.DateTimeField(_("Token Created"), auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.auth_token:
             self.auth_token = self.generate_key()
         return super().save(*args, **kwargs)
 
-    @classmethod
-    def is_invalid(self, createdTime):
+    def is_invalid(self):
         curr_time = timezone.now().timestamp()
         auth_invalid_seconds = float(env('AUTH_TOKEN_INVALIDATION_TIME_IN_SECONDS'))
-        exp_time = createdTime + auth_invalid_seconds
+        exp_time = self.token_created.timestamp() + auth_invalid_seconds
         if exp_time > curr_time:
             return False
         return True
+    
+    def update_token(self):
+        self.auth_token = self.generate_key()
+        self.token_created=timezone.now()
+        return self.save()
 
     @classmethod
     def generate_key(cls):

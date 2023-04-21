@@ -1,6 +1,10 @@
-from django.urls import path
-from .views import goal_auth_token
+from django.urls import path, include
+from authCustom.v1.views import GoalAuthTokenViewSet
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'auth_token', GoalAuthTokenViewSet, basename='auth_token')
 
 urlpatterns = [
-    path('get_token/<str:userId>', goal_auth_token),
+    path('', include(router.urls)),
 ]
