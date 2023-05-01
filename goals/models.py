@@ -2,18 +2,18 @@ from django.db import models
 
 
 class Goal(models.Model):
-    goalType = models.CharField(max_length=50)
+    goal_type = models.CharField(max_length=50, blank=True)
     title = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
-    createdAt = models.DateTimeField('date published', auto_now=True)
-    createdBy = models.CharField(max_length=50)
+    description = models.CharField(max_length=200, blank=True, default='')
+    created_at = models.DateTimeField('date published', auto_now=True)
+    created_by = models.CharField(max_length=50, blank=True)
 
 
 class UserGoal(models.Model):
-    userId = models.CharField(max_length=50)
-    startsOn = models.DateTimeField()
-    endsOn = models.DateTimeField()
-    percentageCompleted = models.IntegerField(default=0)
-    assignedBy = models.CharField(max_length=200)
-    status = models.CharField(max_length=50)
+    user_id = models.CharField(max_length=50)
+    starts_on = models.DateTimeField(null=True)
+    ends_on = models.DateTimeField(null=True)
+    percentage_completed = models.IntegerField(default=0)
+    assigned_by = models.CharField(max_length=200, blank=True)
+    status = models.CharField(max_length=50, blank=True)
     goal = models.ForeignKey(Goal, on_delete=models.CASCADE)

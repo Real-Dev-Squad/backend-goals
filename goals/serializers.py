@@ -4,13 +4,13 @@ from goals.models import Goal, UserGoal
 
 class GoalSerializer(serializers.ModelSerializer):
     included_serializers = {
-        'usergoal_set': "goals.serializers.UserGoalSerialier",
+        'usergoal': "goals.serializers.UserGoalSerialier",
     }
 
     class Meta:
         model = Goal
-        fields = ('goalType', 'title', 'description',
-                  'createdAt', 'createdBy', 'usergoal_set')
+        fields = ('goal_type', 'title', 'description',
+                  'created_at', 'created_by')
 
 
 class UserGoalSerialier(serializers.ModelSerializer):
@@ -19,5 +19,5 @@ class UserGoalSerialier(serializers.ModelSerializer):
     }
     class Meta:
         model = UserGoal
-        fields = ('userId', 'startsOn', 'endsOn',
-                  'percentageCompleted', 'assignedBy', 'status', 'goal')
+        fields = ('user_id', 'starts_on', 'ends_on',
+                  'percentage_completed', 'assigned_by', 'status', 'goal')
