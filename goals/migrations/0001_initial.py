@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('description', models.CharField(blank=True, default='', max_length=200)),
                 ('created_at', models.DateTimeField(auto_now=True, verbose_name='date published')),
                 ('created_by', models.CharField(blank=True, max_length=50)),
-                ('user_id', models.CharField(max_length=50)),
+                ('assigned_to', models.CharField(max_length=50, null=True)),
                 ('starts_on', models.DateTimeField(null=True)),
                 ('ends_on', models.DateTimeField(null=True)),
                 ('percentage_completed', models.IntegerField(default=0)),
