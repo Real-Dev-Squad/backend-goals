@@ -182,7 +182,7 @@ REST_FRAMEWORK = {
     'TEST_REQUEST_DEFAULT_FORMAT': 'vnd.api+json'
 }
 
-CORS_ALLOWED_ORIGINS_REGEXES = [
+CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^http:\/\/localhost:\d{4}$",
     r"^https:\/\/\w+\.realdevsquad\.com$"
 ]
