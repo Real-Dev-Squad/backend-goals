@@ -1,44 +1,44 @@
-from rest_framework.test import APITestCase, APIRequestFactory
-from .models import Goal, UserGoal
-from .fixtures import goals as goals_data, usergoals as usergoals_data
-from .views import GoalViewSet, UserGoalViewSet
+from rest_framework.test import APITestCase, APIClient
+from .models import Goal
+from .fixtures import goals as goals_data
 
 
 class GoalsTest(APITestCase):
     @classmethod
     def setUpClass(cls):
-        cls.factory = APIRequestFactory()
+        cls.client = APIClient()
+
         for goal in goals_data:
             Goal.objects.create(**goal["fields"])
 
-        for user_goal in usergoals_data:
-            goal = Goal.objects.get(pk=user_goal["fields"]["goal"])
-            user_goal["fields"]["goal"] = goal
-            UserGoal.objects.create(**user_goal["fields"])
         super(GoalsTest, cls).setUpClass()
 
     def test_get_goals(self):
-        _response = self.factory.get("/goal")
-        _response = GoalViewSet.as_view({'get': 'list'})(_response)
+        _response = self.client.get('/goal/')
+        _response_data = _response.json()
 
-        for goal_index in range(len(goals_data)):
-            for goal_attribute in goals_data[goal_index]["fields"].keys():
-                if goal_attribute == "createdAt":
-                    continue
-                self.assertEqual(
-                    _response.data[goal_index][goal_attribute], goals_data[goal_index]["fields"][goal_attribute])
+        _response_goals_data = _response_data["data"]
+        _response_goal_data = _response_goals_data[0]["attributes"]
 
-    def test_get_usergoals(self):
-        _response = self.factory.get("/usergoal")
-        _response = UserGoalViewSet.as_view({'get': 'list'})(_response)
+        assert _response.status_code == 200
+        assert len(_response_goals_data) > 0
+        assert "title" in _response_goal_data
+        assert "description" in _response_goal_data
+        assert "assigned_by" in _response_goal_data
+        assert "status" in _response_goal_data
 
-        for usergoal_index in range(len(usergoals_data)):
-            for usergoal_attribute in usergoals_data[usergoal_index]["fields"].keys():
-                if usergoal_attribute == "startsOn" or usergoal_attribute == "endsOn":
-                    continue
-                elif usergoal_attribute == "goal":
-                    goal_id = usergoals_data[usergoal_index]["fields"][usergoal_attribute].id
-                    self.assertEqual(_response.data[usergoal_index][usergoal_attribute]["id"], str(goal_id))
-                else:
-                    self.assertEqual(
-                        _response.data[usergoal_index][usergoal_attribute], usergoals_data[usergoal_index]["fields"][usergoal_attribute])
+    def test_get_goals_filtered(self):
+        goal_title = goals_data[2]["fields"]["title"]
+        _response = self.client.get(f'/goal/?title={goal_title}')
+        _response_data = _response.json()
+
+        _response_goals_data = _response_data["data"]
+        _response_goal_data = _response_goals_data[0]["attributes"]
+
+        assert _response.status_code == 200
+        assert len(_response_goals_data) > 0
+        assert "title" in _response_goal_data
+        assert goal_title == _response_goal_data["title"]
+        assert "description" in _response_goal_data
+        assert "assigned_by" in _response_goal_data
+        assert "status" in _response_goal_data

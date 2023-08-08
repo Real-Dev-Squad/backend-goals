@@ -3,84 +3,80 @@ goals = [
         "model": "goals.goal",
         "pk": 1,
         "fields": {
-            "goalType": "Frontend",
-            "title": "Create TODO APP",
-            "description": "create a todo app in react",
-            "createdBy": "superuser",
-            "createdAt": "2022-12-20T07:45:33.507Z"
+            "title": "Goal 1",
+            "description": "This is the description for Goal 1",
+            "created_at": "2023-08-04T12:00:00Z",
+            "created_by": "User 1",
+            "assigned_to": "User A",
+            "starts_on": "2023-08-05T00:00:00Z",
+            "ends_on": "2023-08-10T00:00:00Z",
+            "percentage_completed": 20,
+            "assigned_by": "Admin",
+            "status": "In Progress"
         }
     },
     {
         "model": "goals.goal",
         "pk": 2,
         "fields": {
-            "goalType": "Backend",
-            "title": "create TODO API",
-            "description": "create a todo API using express",
-            "createdBy": "superuser",
-            "createdAt": "2022-12-20T07:45:33.507Z"
+            "title": "Goal 2",
+            "description": "This is the description for Goal 2",
+            "created_at": "2023-08-04T13:00:00Z",
+            "created_by": "User 2",
+            "assigned_to": "User B",
+            "starts_on": "2023-08-06T00:00:00Z",
+            "ends_on": "2023-08-12T00:00:00Z",
+            "percentage_completed": 50,
+            "assigned_by": "Admin",
+            "status": "In Progress"
         }
     },
     {
         "model": "goals.goal",
         "pk": 3,
         "fields": {
-            "goalType": "Design",
-            "title": "Simple Landing Page",
-            "description": "create simple landing page using figma",
-            "createdBy": "superuser",
-            "createdAt": "2022-12-20T07:45:33.507Z"
-        }
-    },
-]
-
-usergoals = [
-    {
-        "pk": 1,
-        "fields": {
-            "userId": "ivinayakg",
-            "percentageCompleted": 0,
-            "assignedBy": "superuser",
-            "status": "ASSIGNED",
-            "goal": 1,
-            "startsOn": "2022-12-20T07:52:51Z",
-            "endsOn": "2022-12-22T07:52:53Z",
+            "title": "Goal 3",
+            "description": "This is the description for Goal 3",
+            "created_at": "2023-08-04T14:00:00Z",
+            "created_by": "User 3",
+            "assigned_to": "User C",
+            "starts_on": "2023-08-07T00:00:00Z",
+            "ends_on": "2023-08-15T00:00:00Z",
+            "percentage_completed": 80,
+            "assigned_by": "Admin",
+            "status": "Completed"
         }
     },
     {
-        "pk": 2,
-        "fields": {
-            "userId": "ivinayakg",
-            "percentageCompleted": 0,
-            "assignedBy": "superuser",
-            "status": "ASSIGNED",
-            "goal": 2,
-            "startsOn": "2022-12-20T07:52:51Z",
-            "endsOn": "2022-12-22T07:52:53Z",
-        }
-    },
-    {
-        "pk": 3,
-        "fields": {
-            "userId": "pallab",
-            "percentageCompleted": 0,
-            "assignedBy": "superuser",
-            "status": "ASSIGNED",
-            "goal": 3,
-            "startsOn": "2022-12-20T07:52:51Z",
-            "endsOn": "2022-12-22T07:52:53Z",
-        }
-    },
-    {
+        "model": "goals.goal",
         "pk": 4,
         "fields": {
-            "userId": "pallab",
-            "percentageCompleted": 0,
-            "assignedBy": "superuser",
-            "status": "ASSIGNED",
-            "goal": 1,
-            "startsOn": "2022-12-20T07:52:51Z",
-            "endsOn": "2022-12-22T07:52:53Z",
+            "title": "Goal 4",
+            "description": "This is the description for Goal 4",
+            "created_at": "2023-08-04T15:00:00Z",
+            "created_by": "User 4",
+            "assigned_to": "User D",
+            "starts_on": "2023-08-08T00:00:00Z",
+            "ends_on": "2023-08-18T00:00:00Z",
+            "percentage_completed": 10,
+            "assigned_by": "Admin",
+            "status": "In Progress"
+        }
+    },
+    {
+        "model": "goals.goal",
+        "pk": 5,
+        "fields": {
+            "title": "Goal 5",
+            "description": "This is the description for Goal 5",
+            "created_at": "2023-08-04T16:00:00Z",
+            "created_by": "User 5",
+            "assigned_to": "User E",
+            "starts_on": "2023-08-09T00:00:00Z",
+            "ends_on": "2023-08-20T00:00:00Z",
+            "percentage_completed": 40,
+            "assigned_by": "Admin",
+            "status": "In Progress"
         }
     }
 ]
