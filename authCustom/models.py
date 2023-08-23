@@ -11,7 +11,7 @@ class Token_Custom(BaseModel):
     The default authorization token model.
     """
     auth_token = models.CharField(_("Auth Token"), max_length=40)
-    user_id = models.CharField(primary_key=True, max_length=80)
+    user_id = models.CharField(max_length=80)
     token_created = models.DateTimeField(_("Token Created"), auto_now_add=True)
 
     def save(self, *args, **kwargs):

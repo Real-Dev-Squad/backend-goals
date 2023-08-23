@@ -12,7 +12,7 @@
       "ends_on": "2023-08-10T00:00:00Z",
       "percentage_completed": 20,
       "assigned_by": "Admin",
-      "status": "In Progress"
+      "status": "ongoing"
     }
   },
   {
@@ -28,7 +28,7 @@
       "ends_on": "2023-08-12T00:00:00Z",
       "percentage_completed": 50,
       "assigned_by": "Admin",
-      "status": "In Progress"
+      "status": "ongoing"
     }
   },
   {
@@ -60,7 +60,7 @@
       "ends_on": "2023-08-18T00:00:00Z",
       "percentage_completed": 10,
       "assigned_by": "Admin",
-      "status": "In Progress"
+      "status": "ongoing"
     }
   },
   {
@@ -76,7 +76,7 @@
       "ends_on": "2023-08-20T00:00:00Z",
       "percentage_completed": 40,
       "assigned_by": "Admin",
-      "status": "In Progress"
+      "status": "ongoing"
     }
   }
 ]
