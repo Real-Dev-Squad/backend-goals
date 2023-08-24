@@ -46,6 +46,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 INSTALLED_APPS = [
     'goals.apps.GoalsConfig',
+    'user.apps.UserConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -55,7 +56,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authCustom.apps.AuthcustomConfig',
     'base.apps.BaseConfig',
     'rest_framework_json_api',
     'django_filters'

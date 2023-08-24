@@ -3,7 +3,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from django.utils import timezone
 
-from .models import Token_Custom
+from .models import User
 from .utils import env
 
 
@@ -16,13 +16,13 @@ def goal_auth_token(request, userId):
             raise Exception("Wrong REST_KEY")
 
         try:
-            token = Token_Custom.objects.get(userId=userId)
+            token = User.objects.get(userId=userId)
             if token.is_invalid(createdTime=token.created.timestamp()):
-                Token_Custom.objects.filter(userId=userId).update(
-                    auth_token=Token_Custom.generate_key(), created=timezone.now())
-                token = Token_Custom.objects.get(userId=userId)
-        except Token_Custom.DoesNotExist:
-            token = Token_Custom(userId=userId)
+                User.objects.filter(userId=userId).update(
+                    auth_token=User.generate_key(), created=timezone.now())
+                token = User.objects.get(userId=userId)
+        except User.DoesNotExist:
+            token = User(userId=userId)
             token.save()
 
         return Response({"message": "Goal site token generated succesfully", "token": token.auth_token})

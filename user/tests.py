@@ -4,9 +4,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.utils import timezone
 
-from authCustom.authentications import TokenCustomAuthentication
+from user.authentications import TokenCustomAuthentication
 from base.utils import env
-from authCustom.models import Token_Custom
+from user.models import Token_Custom
 import json
 # DEMO API to test authentication
 

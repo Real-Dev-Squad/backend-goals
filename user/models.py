@@ -6,7 +6,7 @@ from django.utils import timezone
 from base.utils import env
 from base.models import BaseModel
 
-class Token_Custom(BaseModel):
+class User(BaseModel):
     """
     The default authorization token model.
     """
