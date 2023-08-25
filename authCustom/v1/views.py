@@ -1,16 +1,16 @@
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from django_filters.rest_framework import DjangoFilterBackend
 
+from base.utils import env
+from base.base_views import ModelBaseViewSet
 from authCustom.models import Token_Custom
 from authCustom.v1.serializer import TokenSerializer
-from base.utils import env
 
-class GoalAuthTokenViewSet(ModelViewSet):
+
+class GoalAuthTokenViewSet(ModelBaseViewSet):
     serializer_class = TokenSerializer
     http_method_names = ['post']
-    
-    def get_queryset(self):
-        return []
 
     def create(self, request, *args, **kwargs):
         try:
@@ -20,7 +20,6 @@ class GoalAuthTokenViewSet(ModelViewSet):
                 raise Exception("Wrong REST_KEY")
             elif user_id is None:
                 raise Exception("Provide A User Id")
-
 
             try:
                 token = Token_Custom.objects.get(user_id=user_id)
@@ -34,4 +33,3 @@ class GoalAuthTokenViewSet(ModelViewSet):
             return Response({"message": "Goal site token generated succesfully", "token": token_data})
         except Exception as e:
             return Response(e.args[0], status=400, exception=True)
-    
