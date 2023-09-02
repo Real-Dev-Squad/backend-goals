@@ -1,4 +1,4 @@
-from .models import Token_Custom
+from .models import User
 from rest_framework import authentication
 from rest_framework import exceptions
 
@@ -11,7 +11,7 @@ class UserAuthenticationExtender():
         self.is_authenticated = True
 
 
-class TokenCustomAuthentication(authentication.BaseAuthentication):
+class UserAuthentication(authentication.BaseAuthentication):
     def authenticate(self, request):
         try:
             goal_token = request.COOKIES['goal-site-session']
@@ -19,11 +19,11 @@ class TokenCustomAuthentication(authentication.BaseAuthentication):
             return None
 
         try:
-            token = Token_Custom.objects.get(auth_token=goal_token)
+            token = User.objects.get(auth_token=goal_token)
             if token.is_invalid():
                 raise exceptions.AuthenticationFailed(
                     "Token is expired or invalid")
-        except Token_Custom.DoesNotExist:
+        except User.DoesNotExist:
             raise exceptions.AuthenticationFailed(
                 'Token is expired or invalid')
 

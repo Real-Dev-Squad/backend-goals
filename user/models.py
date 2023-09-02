@@ -6,11 +6,11 @@ from django.utils import timezone
 from base.utils import env
 from base.models import BaseModel
 
-class Token_Custom(BaseModel):
+class User(BaseModel):
     """
     The default authorization token model.
     """
-    auth_token = models.CharField(_("Auth Token"), max_length=40)
+    auth_token = models.CharField(_("Auth Token"), max_length=40, blank=True)
     user_id = models.CharField(max_length=80)
     token_created = models.DateTimeField(_("Token Created"), auto_now_add=True)
 
