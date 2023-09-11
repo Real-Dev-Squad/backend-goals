@@ -139,7 +139,7 @@ GitHub.sublime-settings
 
 
 # Ignoring .env file
-django_jsonapi/.env
+config/.env
 
 # Ignore local setting file
-django_jsonapi/settings/local.py
+config/settings/local.py

@@ -14,9 +14,9 @@ DJANGO_ENV = 'DJANGO_ENV'
 PRODUCTION = 'PRODUCTION'
 DEVELOPMENT = 'DEVELOPMENT'
 TESTING = 'TESTING'
-SETTINGS_PRODUCTION = 'django_jsonapi.settings.production'
-SETTINGS_DEVELOPMENT = 'django_jsonapi.settings.development'
-SETTINGS_TESTING = 'django_jsonapi.settings.testing'
+SETTINGS_PRODUCTION = 'config.settings.production'
+SETTINGS_DEVELOPMENT = 'config.settings.development'
+SETTINGS_TESTING = 'config.settings.test'
 
 
 def main():
