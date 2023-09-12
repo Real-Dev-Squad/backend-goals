@@ -22,6 +22,15 @@ venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
+- Spin up the postgresql server, the container
+```
+docker-compose -f /deploy/compose.yml up -d
+```
+- Setup the env files
+```
+Create a `.env` file in the root directory, and copy paste the code from the `sample.env` file to it
+```
+
 > This will install all the necessary packages listed in the requirements.txt file.
 - Create a `.env` file in the root folder and copy paste the content from the .env.example.
 - Set up the database by running the commands 

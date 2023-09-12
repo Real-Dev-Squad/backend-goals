@@ -12,10 +12,3 @@ ALLOWED_HOSTS = ['localhost', '.realdevsquad.com']
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': env('DB_ENGINE', default='django.db.backends.sqlite3'),
-        'NAME': env('DB_NAME', default=BASE_DIR / 'db.sqlite3'),
-    }
-}

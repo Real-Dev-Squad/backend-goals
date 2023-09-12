@@ -13,9 +13,3 @@ DEFAULT_ALLOWED_HOSTS_STRING = '.realdevsquad.com'
 ALLOWED_HOSTS = env(
     'ALLOWED_HOSTS', default=DEFAULT_ALLOWED_HOSTS_STRING).split(' ')
 
-DATABASES = {
-    'default': {
-        'ENGINE': env('DB_ENGINE', default='django.db.backends.sqlite3'),
-        'NAME': env('DB_NAME', default=BASE_DIR / 'db.sqlite3'),
-    }
-}

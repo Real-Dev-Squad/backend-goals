@@ -25,7 +25,10 @@ class TestUsersViewSet:
             "data": {
                 "type": "User",
                 "attributes": {
-                    "rds_id": rds_id
+                    "rds_id": rds_id,
+                    "roles": {
+                        "member": True
+                    }
                 }
             }
         }
@@ -42,6 +45,8 @@ class TestUsersViewSet:
 
         assert user_data["rds_id"] == rds_id
         assert "token" in user_data
+        assert "roles" in user_data
+        assert user_data["roles"]["member"] == True
 
     def test_get_user(self, client, user_t1):
         self.client.credentials(HTTP_AUTHORIZATION=get_user_token(user_t1))
@@ -56,4 +61,3 @@ class TestUsersViewSet:
                      **_response_data["attributes"]}
 
         assert user_data["rds_id"] == user_t1.rds_id
-        assert "token" in user_data
