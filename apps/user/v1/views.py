@@ -31,9 +31,13 @@ class UserViewSet(ModelBaseViewSet):
 
     def create(self, request, *args, **kwargs):
         rds_id = request.data.get("rds_id")
+        roles = request.data.get("roles", None)
         user = User.objects.filter(rds_id=rds_id).first()
         if user is not None:
-            user_serialized = self.get_serializer_class(user)
+            if roles is not None:
+                user.roles = roles
+                user.save()
+            user_serialized = self.get_serializer_class()(user)
             headers = self.get_success_headers(user_serialized.data)
             return Response(user_serialized.data, status=status.HTTP_201_CREATED, headers=headers)
         return super().create(request, *args, **kwargs)
