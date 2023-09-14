@@ -8,4 +8,4 @@ class GoalViewSet(ModelBaseViewSet):
     queryset = Goal.objects.all().order_by('-created_at')
     serializer_class = GoalSerializer
     filterset_fields = ['status', 'title', 'assigned_to']
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
