@@ -5,11 +5,18 @@ from apps.user.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "rds_id", "created_at", "modified_at", "roles"]
+
+
+class CreateUserSerializer(UserSerializer):
     token = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ["id", "rds_id", "token", "created_at", "modified_at"]
+        fields = ["id", "rds_id", "token",
+                  "created_at", "modified_at", "roles"]
 
     def get_token(self, user):
         refresh = RefreshToken.for_user(user)
@@ -17,10 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
             "exp": refresh.payload["exp"],
             "access": str(refresh.access_token)
         }
-    
+
     def create(self, validated_data):
         if self.is_valid():
             return User.objects.create_user(**validated_data)
-
-
-

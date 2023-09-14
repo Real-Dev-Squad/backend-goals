@@ -16,10 +16,3 @@ PORT = 5000
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','.realdevsquad.com']
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
