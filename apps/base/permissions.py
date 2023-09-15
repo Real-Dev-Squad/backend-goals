@@ -10,10 +10,10 @@ def AuthorizationPermissions(roles=[]):
 
             user_roles = request.user.roles
             for role in roles:
-                if user_roles.get(role, False) is False:
-                    return False
+                if user_roles.get(role, False) is True:
+                    return True
                 else:
                     continue
-            return True
+            return False
 
     return AuthorizationPermission
