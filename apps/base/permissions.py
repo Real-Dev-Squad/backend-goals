@@ -1,6 +1,19 @@
 from rest_framework import permissions
+from apps.base.constants import SUPER_USER_ROLE, MEMBER_ROLE
 
 
-class IsSuperUserPermission(permissions.BasePermission):
-    def has_permission(self, request, view):
-        return False
+def AuthorizationPermissions(roles=[]):
+    class AuthorizationPermission:
+        def has_permission(self, request, view):
+            if not request.user.is_authenticated:
+                return False
+
+            user_roles = request.user.roles
+            for role in roles:
+                if user_roles.get(role, False) is False:
+                    return False
+                else:
+                    continue
+            return True
+
+    return AuthorizationPermission

@@ -1,7 +1,10 @@
+from rest_framework.permissions import IsAuthenticated
+
 from apps.base.base_views import ModelBaseViewSet
 from apps.goals.models import Goal
 from apps.goals.serializers import GoalSerializer
-from rest_framework.permissions import IsAuthenticated
+from apps.base.permissions import AuthorizationPermissions
+from apps.base.constants import MEMBER_ROLE
 
 
 class GoalViewSet(ModelBaseViewSet):
