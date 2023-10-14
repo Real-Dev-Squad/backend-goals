@@ -24,7 +24,7 @@ pip install -r requirements.txt
 ```
 - Spin up the postgresql server, the container
 ```
-docker-compose -f /deploy/compose.yml up -d
+docker-compose -f deploy/compose.yml up -d
 ```
 - Setup the env files
 ```
