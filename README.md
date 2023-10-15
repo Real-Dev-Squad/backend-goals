@@ -22,9 +22,12 @@ venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-- Spin up the postgresql server, the container
+- Spin up the development server
 ```
-docker-compose -f deploy/compose.yml up -d
+docker compose build
+```
+```
+docker compose up
 ```
 - Setup the env files
 ```

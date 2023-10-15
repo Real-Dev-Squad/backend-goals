@@ -9,7 +9,7 @@ PORT = env('PORT')
 
 DEBUG = env('DEBUG', default=True)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.realdevsquad.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.realdevsquad.com', '0.0.0.0']
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
