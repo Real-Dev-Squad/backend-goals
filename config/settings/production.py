@@ -10,6 +10,8 @@ DEBUG = env('DEBUG', default=False)
 
 DEFAULT_ALLOWED_HOSTS_STRING = '.realdevsquad.com'
 
+CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS')
+
 ALLOWED_HOSTS = env(
     'ALLOWED_HOSTS', default=DEFAULT_ALLOWED_HOSTS_STRING).split(' ')
 
