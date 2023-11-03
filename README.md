@@ -21,20 +21,17 @@ venv/bin/activate
 - Install the project dependencies by running the command 
 ```
 pip install -r requirements.txt
-```
-- Spin up the development server
-```
-docker compose build
-```
-```
-docker compose up
+> This will install all the necessary packages listed in the requirements.txt file.
 ```
 - Setup the env files
 ```
 Create a `.env` file in the root directory, and copy paste the code from the `sample.env` file to it
 ```
-
-> This will install all the necessary packages listed in the requirements.txt file.
+- Install [docker](https://docs.docker.com/get-docker/) 
+- Spin up the database
+```
+docker-compose up db
+```
 - Create a `.env` file in the root folder and copy paste the content from the .env.example.
 - Set up the database by running the commands 
 ```
@@ -43,8 +40,7 @@ python manage.py makemigrations
 ```
 python manage.py migrate
 ```
-> These commands create and apply database migrations based on the models defined in your project.
-- Create an admin user by running the command 
+- Create an admin user by running the command (Optional)
 ```
 python manage.py createsuperuser
 ```
