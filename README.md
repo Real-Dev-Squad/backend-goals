@@ -12,39 +12,25 @@ virtualenv venv
 - Activate the virtual environment by running the command 
 ```
 source venv/bin/activate
-``` 
-or depending on your operating system.
 ```
-venv/bin/activate
-``` 
-- Configure your IDE to use the Python interpreter from your virtual environment. This ensures that your project dependencies are properly recognized and used. Here is a guide for VS Code.
 - Install the project dependencies by running the command 
 ```
 pip install -r requirements.txt
-> This will install all the necessary packages listed in the requirements.txt file.
 ```
+> This will install all the necessary packages listed in the requirements.txt file.
 - Setup the env files
 ```
-Create a `.env` file in the root directory, and copy paste the code from the `sample.env` file to it
+Create a `.env` file in the root directory, and copy paste the code from the `.env.example` file to it
 ```
 - Install [docker](https://docs.docker.com/get-docker/) 
 - Spin up the database
 ```
 docker-compose up db
 ```
-- Create a `.env` file in the root folder and copy paste the content from the .env.example.
-- Set up the database by running the commands 
-```
-python manage.py makemigrations
-```
+- Set up the database by running the command
 ```
 python manage.py migrate
 ```
-- Create an admin user by running the command (Optional)
-```
-python manage.py createsuperuser
-```
-> This will allow you to access the Django admin panel and perform administrative tasks.
 - Finally, start the development server by running the command 
 ```
 python manage.py runserver
