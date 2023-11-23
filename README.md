@@ -1,4 +1,4 @@
-## Setup
+## Setup Local Development
 
 - Create a virtual environment for your Python project. A virtual environment is a self-contained environment that allows you to isolate your project dependencies and avoid conflicts with other projects. Learn more here.
 - Install the Python virtualenv package using the command 
