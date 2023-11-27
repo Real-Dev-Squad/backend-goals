@@ -8,7 +8,6 @@ from apps.user.v1.serializer import UserSerializer, CreateUserSerializer
 from apps.user.permission import RestKeyPermission
 from apps.base.permissions import IsSuperUserPermission
 
-
 class UserViewSet(ModelBaseViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer

@@ -1,10 +1,10 @@
-from rest_framework_json_api import serializers
+from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from apps.user.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ["id", "rds_id", "created_at", "modified_at", "roles"]
