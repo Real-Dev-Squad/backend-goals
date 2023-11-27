@@ -16,7 +16,10 @@ services:
     image: postgres:latest
     container_name: goals-postgres
     ports:
-      - "5432:5432"
+      - "5435:5435"
+    expose:
+      - "5435"
+    command: "-p 5435"
     env_file:
       - .env
 
