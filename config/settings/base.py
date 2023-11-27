@@ -189,8 +189,8 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^http:\/\/localhost:\d{4}$",
-    r"^https:\/\/\w+\.realdevsquad\.com$"
+    r"^http://localhost:\d{4}$",
+    r"^https://[\w-]+\.realdevsquad\.com$"
 ]
 
 SIMPLE_JWT = {
