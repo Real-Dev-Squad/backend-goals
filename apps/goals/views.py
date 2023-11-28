@@ -12,5 +12,5 @@ class GoalViewSet(ModelBaseViewSet):
     serializer_class = GoalSerializer
     filter_backends = [filters.OrderingFilter, SearchFilter, django_filters.DjangoFilterBackend]
     search_fields = ['title']
-    filterset_fields = ['status']
+    filterset_fields = ['status', 'assigned_to']
     # permission_classes = [IsAuthenticated]
