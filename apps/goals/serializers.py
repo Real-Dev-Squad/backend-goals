@@ -1,7 +1,7 @@
-from rest_framework_json_api import serializers
+from rest_framework import serializers
 from apps.goals.models import Goal
 
-class GoalSerializer(serializers.ModelSerializer):
+class GoalSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Goal
         fields = ('title', 'description',
