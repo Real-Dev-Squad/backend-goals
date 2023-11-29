@@ -6,7 +6,7 @@ from apps.base.base_views import ModelBaseViewSet
 from apps.user.models import User
 from apps.user.v1.serializer import UserSerializer, CreateUserSerializer
 from apps.user.permission import RestKeyPermission
-from apps.base.permissions import IsSuperUserPermission
+from apps.base.permissions import AuthorizationPermissions, SUPER_USER_ROLE
 
 class UserViewSet(ModelBaseViewSet):
     queryset = User.objects.all()
@@ -17,7 +17,8 @@ class UserViewSet(ModelBaseViewSet):
         if self.action in ["create"]:
             self.permission_classes = [RestKeyPermission]
         elif self.action in ["list"]:
-            self.permission_classes = [IsSuperUserPermission]
+            self.permission_classes = [
+                AuthorizationPermissions([SUPER_USER_ROLE])]
         else:
             self.permission_classes = [IsAuthenticated]
         return [permission() for permission in self.permission_classes]

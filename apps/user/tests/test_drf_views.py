@@ -4,6 +4,7 @@ from rest_framework.test import APIClient
 from django.conf import LazySettings
 
 from apps.conftest import get_user_token
+from apps.base.constants import SUPER_USER_ROLE
 
 settings = LazySettings()
 
@@ -61,3 +62,20 @@ class TestUsersViewSet:
                      **_response_data["attributes"]}
 
         assert user_data["rds_id"] == user_t1.rds_id
+
+    def test_list_users(self, client, user_t1, user_t2):
+        self.client.credentials(HTTP_AUTHORIZATION=get_user_token(user_t1))
+
+        _response = self.client.get(
+            f"/api/v1/user/",  format="vnd.api+json")
+
+        assert _response.status_code == status.HTTP_403_FORBIDDEN
+
+        # giving a role to authorize
+        user_t1.roles[SUPER_USER_ROLE] = True
+        user_t1.save()
+
+        _response = self.client.get(
+            f"/api/v1/user/",  format="vnd.api+json")
+
+        assert _response.status_code == status.HTTP_200_OK
